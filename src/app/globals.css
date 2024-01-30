@@ -1,0 +1,207 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	:root {
+		--background: 0 0% 100%;
+		--foreground: 222.2 84% 4.9%;
+		--card: 0 0% 100%;
+		--card-foreground: 222.2 84% 4.9%;
+		--popover: 0 0% 100%;
+		--popover-foreground: 222.2 84% 4.9%;
+		--primary: 222.2 47.4% 11.2%;
+		--primary-foreground: 210 40% 98%;
+		--secondary: 210 40% 96.1%;
+		--secondary-foreground: 222.2 47.4% 11.2%;
+		--muted: 210 40% 96.1%;
+		--muted-foreground: 215.4 16.3% 46.9%;
+		--accent: 210 40% 96.1%;
+		--accent-foreground: 222.2 47.4% 11.2%;
+		--destructive: 0 84.2% 60.2%;
+		--destructive-foreground: 210 40% 98%;
+		--border: 214.3 31.8% 91.4%;
+		--input: 214.3 31.8% 91.4%;
+		--ring: 222.2 84% 4.9%;
+		--radius: 0.75rem;
+		--mbprimary: 159, 82%, 56%;
+	}
+
+	.dark {
+		--background: 222.2 84% 4.9%;
+		--foreground: 210 40% 98%;
+		--card: 222.2 84% 4.9%;
+		--card-foreground: 210 40% 98%;
+		--popover: 222.2 84% 4.9%;
+		--popover-foreground: 210 40% 98%;
+		--primary: 210 40% 98%;
+		--primary-foreground: 222.2 47.4% 11.2%;
+		--secondary: 217.2 32.6% 17.5%;
+		--secondary-foreground: 210 40% 98%;
+		--muted: 217.2 32.6% 17.5%;
+		--muted-foreground: 215 20.2% 65.1%;
+		--accent: 217.2 32.6% 17.5%;
+		--accent-foreground: 210 40% 98%;
+		--destructive: 0 62.8% 30.6%;
+		--destructive-foreground: 210 40% 98%;
+		--border: 217.2 32.6% 17.5%;
+		--input: 217.2 32.6% 17.5%;
+		--ring: 212.7 26.8% 83.9;
+	}
+}
+
+@layer base {
+	* {
+		@apply border-border;
+	}
+	body {
+		@apply bg-background text-foreground;
+	}
+}
+
+.banner {
+	background-image: url("/bannersabi.png");
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
+.mybg-primary {
+	background: hsl(159, 82%, 56%);
+}
+.mycolor-primary {
+	color: hsl(159, 82%, 56%);
+}
+.mycolor-alt {
+	color: hsl(225, 82%, 56%);
+}
+.mybg-primary {
+	color: hsl(225, 82%, 56%);
+}
+
+.no-scrollbar::-webkit-scrollbar {
+	display: none;
+}
+
+::-webkit-scrollbar {
+	width: 8px;
+}
+::-webkit-scrollbar-track {
+	width: 8px;
+}
+::-webkit-scrollbar-thumb {
+	background: rgb(106, 118, 124);
+	border-radius: 10px;
+}
+
+/* clerk dark them css */
+.dark .cl-card {
+	background: hsl(217.2 32.6% 17.5%);
+	color: white;
+}
+.dark .cl-headerTitle,
+.dark .cl-headerSubtitle {
+	color: white;
+}
+.dark .cl-socialButtonsIconButton {
+	background: hsl(217, 33%, 25%);
+}
+.dark .cl-socialButtonsIconButton span {
+	color: #fff;
+}
+
+.dark .cl-dividerLine {
+	background: hsl(217, 33%, 37%);
+}
+.dark .cl-dividerText,
+.dark .cl-formFieldLabel {
+	color: hsl(0, 0%, 100%);
+}
+.dark .cl-form input {
+	background: transparent;
+	color: rgb(230, 240, 243);
+	border: 1px solid hsl(217, 33%, 25%);
+}
+.dark .cl-formFieldSuccessText {
+	color: rgb(71, 226, 162);
+}
+.dark .cl-formFieldInputShowPasswordButton,
+.dark .cl-footerActionText {
+	color: rgb(255, 255, 255);
+}
+
+.dark .cl-footerActionLink {
+	color: #4c9be4;
+}
+.cl-internal-b3fm6y {
+	opacity: 0;
+}
+
+.cl-formButtonPrimary {
+	background: hsl(159, 72%, 53%);
+}
+.cl-formButtonPrimary:hover {
+	background: hsl(159, 62%, 32%);
+}
+
+.showing {
+	display: grid;
+	grid-template-rows: 0fr;
+	transition: grid-template-rows 5000ms;
+}
+.showing > div {
+	overflow: hidden;
+}
+.showing.active {
+	grid-template-rows: 1fr;
+}
+
+.cursive {
+	font-family: "Cedarville Cursive", cursive;
+}
+.Welcome-text {
+	background: linear-gradient(
+			0deg,
+			rgba(255, 255, 255, 0.4),
+			rgba(255, 255, 255, 0.4)
+		),
+		linear-gradient(90.01deg, #e59cff 0.01%, #ba9cff 50.01%, #9cb2ff 100%);
+	background-blend-mode: normal, screen;
+	-webkit-background-clip: text;
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+.Welcome-box {
+	isolation: isolate;
+	overflow: hidden;
+	align-items: center;
+	-webkit-backdrop-filter: blur(6px);
+	backdrop-filter: blur(6px);
+	border-radius: 32px;
+	box-shadow: inset 0 -7px 11px #a48fff1f;
+	display: flex;
+
+	position: relative;
+	width: -moz-max-content;
+	width: max-content;
+	transition: 0.45s cubic-bezier(0.6, 0.6, 0, 1) box-shadow;
+}
+
+.button-primary {
+	background: linear-gradient(
+			180deg,
+			rgba(60, 8, 126, 0) 0%,
+			rgba(60, 8, 126, 0.32) 100%
+		),
+		rgba(113, 47, 255, 0.12);
+	box-shadow: inset 0 0 12px #bf97ff3d;
+}
+.button-primary:hover {
+	background: linear-gradient(
+			180deg,
+			rgba(60, 8, 126, 0) 0%,
+			rgba(60, 8, 126, 0.42) 100%
+		),
+		rgba(113, 47, 255, 0.24);
+	box-shadow: inset 0 0 12px #bf97ff70;
+}
