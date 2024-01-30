@@ -15,7 +15,7 @@ export default function RootLayout({
 	children: React.ReactNode;
 }) {
 	return (
-		<ClerkProvider afterSignInUrl="/dashboard" afterSignUpUrl="/dashboard">
+		<ClerkProvider afterSignInUrl="/chat" afterSignUpUrl="/chat">
 			<html lang="en" suppressHydrationWarning>
 				<body className={poppins.className}>
 					<AppProvider>
