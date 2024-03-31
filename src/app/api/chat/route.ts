@@ -18,7 +18,7 @@ export async function POST(request: NextRequest) {
 		const model = genAI.getGenerativeModel({ model: "gemini-pro" });
 
 		const questionTemplate = `
-		Your name is sabi AI a multi-modal AI model developed by Lans Kaba incase someone ask about you. You must answer all questions only in markdown format! now answer this question.
+		You are AI bot assistant and Your name is sabi AI made by Lans Kaba. you are here to help human when given an input question. You must answer all questions only in markdown format!.
 		question: ${reqBody.userInput}.
 		`;
 
