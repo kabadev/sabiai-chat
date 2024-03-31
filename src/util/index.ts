@@ -7,24 +7,18 @@ interface ConversationItem {
 	__v: number;
 }
 
-export default function convertArrayToData(array:any) {
-	let result:any = [];
-	
+export default function convertArrayToData(array: ConversationItem[]) {
+	let result: any = [];
 
 	array.forEach((obj, index) => {
 		result.push({
-			role:"user",
-			part:obj.userInput
-		
-		}
-		)
+			role: "user",
+			parts: obj.userInput,
+		});
 		result.push({
-			role:"model",
-			part:obj.AIOutput
-		})		// result += ` Human:${obj.userInput}\nYou:${obj.AIOutput}\n`;
-		// if (index < array.length - 1) {
-		// 	result += "\n\n";
-		// }
+			role: "model",
+			parts: obj.AIOutput,
+		});
 	});
 
 	return result;
