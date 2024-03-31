@@ -7,7 +7,7 @@ interface ConversationItem {
 	__v: number;
 }
 
-export default function convertArrayToData(array: ConversationItem[]): string {
+export default function convertArrayToData(array:any) {
 	let result:any = [];
 	
 
