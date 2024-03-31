@@ -12,6 +12,7 @@
     "@clerk/nextjs": "^4.27.2",
     "@fal-ai/serverless-client": "^0.6.1",
     "@fal-ai/serverless-proxy": "^0.6.0",
+    "@google/generative-ai":"^0.2.1",
     "@hookform/resolvers": "^3.3.2",
     "@radix-ui/react-accordion": "^1.1.2",
     "@radix-ui/react-alert-dialog": "^1.0.5",
