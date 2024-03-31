@@ -33,7 +33,14 @@ export async function POST(request: NextRequest) {
 
 
 		const chat=model.startChat({
-			history:conver_History
+			history: {
+        role: "user",
+        parts: [{ text: "Hello, I have 2 dogs in my house." }],
+      },
+      {
+        role: "model",
+        parts: [{ text: "Great to meet you. What would you like to know?" }],
+      },
 		})
 		const result=await chat.sendMessage(reqBody.userInput)
          const res=await result.response.text()
