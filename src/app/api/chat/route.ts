@@ -1,63 +1,48 @@
 import { connect } from "@/config/dbConfig";
 import { NextRequest, NextResponse } from "next/server";
-import { OpenAI } from "langchain/llms/openai";
-import { PromptTemplate } from "langchain/prompts";
+
 
 import { Chat } from "@/schema/chat";
-
-import { StringOutputParser } from "langchain/schema/output_parser";
-import {
-	RunnablePassthrough,
-	RunnableSequence,
-} from "langchain/schema/runnable";
+import {GoogleGenerativeAI} from "@google/generative-ai"
 import convertArrayToData from "@/util";
 export async function POST(request: NextRequest) {
 	await connect();
 	try {
-		await connect();
-
+		
 		const reqBody = await request.json();
 
 		if (!reqBody.userInput) {
 			throw new Error("Missing 'input' field in the request body");
 		}
+ //for test only. use env for your key
+		const genAI=new GoogleGenerativeAI("AIzaSyCjqn20W22omCJ3pW5qWBhylTPAlwz1vJ8")
 
-		const model = new OpenAI({ temperature: 0 });
-		const answerTemplate = `
-		You are AI bot assistant and Your name is sabi AI made by Lans Kaba. you are here to help human when given an input question, generate a response that is informative, coherent, and contextually appropriate. also check in the conversation history between you and the human which will also help you to find response that is related to the input question. You must answer all questions only in markdown format!.
-		question: {question}
-		conversation history:{conv_history}
-		answer:
+		const model=genAI.getGenerativeModel({model:"gemini-pro"})
+
+		
+		const questionTemplate = `
+		You are AI bot assistant and Your name is sabi AI made by Lans Kaba. you are here to help human when given an input question. You must answer all questions only in markdown format!.
+		question: ${reqBody.userInput}.
 		`;
-		const answerPrompt = PromptTemplate.fromTemplate(answerTemplate);
-		const answerChain = answerPrompt.pipe(model).pipe(new StringOutputParser());
-
-		const chainS = RunnableSequence.from([
-			{
-				original_input: new RunnablePassthrough(),
-			},
-			{
-				question: ({ original_input }) => original_input.question,
-				conv_history: ({ original_input }) => original_input.conv_history,
-			},
-			answerChain,
-		]);
+		
 
 		const chat_History = await Chat.find({
 			conversationId: reqBody.conversationId,
 		}).sort({ _id: 1 });
 		const conver_History = convertArrayToData(chat_History);
 
-		const result = await chainS.invoke({
-			question: reqBody.userInput,
-			conv_history: conver_History,
-		});
+
+		const chat=model.startChat({
+			history:conver_History
+		})
+		const result=await chat.send(questionTemplate)
+         const res=await result.response.text()
 
 		const reqData = {
 			userInput: reqBody.userInput,
 			userId: reqBody.userId,
 			conversationId: reqBody.conversationId,
-			AIOutput: result,
+			AIOutput: res,
 		};
 
 		const newChat = new Chat(reqData);
