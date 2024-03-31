@@ -16,13 +16,13 @@ export default function convertArrayToData(array:any) {
 			role:"user",
 			part:obj.userInput
 		
-		},
-		{
-			role:"model",
-			part:obj.AIOutput
 		}
 		)
-		// result += ` Human:${obj.userInput}\nYou:${obj.AIOutput}\n`;
+		result.push({
+			role:"model",)
+
+			part:obj.AIOutput
+		}		// result += ` Human:${obj.userInput}\nYou:${obj.AIOutput}\n`;
 		// if (index < array.length - 1) {
 		// 	result += "\n\n";
 		// }
