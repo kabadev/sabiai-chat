@@ -35,7 +35,7 @@ export async function POST(request: NextRequest) {
 		const chat=model.startChat({
 			history:conver_History
 		})
-		const result=await chat.send(questionTemplate)
+		const result=await chat.sendMessage(questionTemplate)
          const res=await result.response.text()
 
 		const reqData = {
