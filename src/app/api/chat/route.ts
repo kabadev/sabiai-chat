@@ -46,7 +46,7 @@ export async function POST(request: NextRequest) {
          const res=await result.response.text()
 
 		const reqData = {
-			userInput: reqBody.userInput,
+			userInput:questionTemplate,
 			userId: reqBody.userId,
 			conversationId: reqBody.conversationId,
 			AIOutput: res,
