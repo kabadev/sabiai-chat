@@ -12,10 +12,9 @@ export async function POST(request: NextRequest) {
 		if (!reqBody.userInput) {
 			throw new Error("Missing 'input' field in the request body");
 		}
-		//for test only. use env for your key
-		const genAI = new GoogleGenerativeAI(
-			"AIzaSyCjqn20W22omCJ3pW5qWBhylTPAlwz1vJ8"
-		);
+
+		const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+		
 
 		const model = genAI.getGenerativeModel({ model: "gemini-pro" });
 
@@ -30,16 +29,7 @@ export async function POST(request: NextRequest) {
 		const conver_History = convertArrayToData(chat_History);
 
 		const chatModel = model.startChat({
-			history: [
-				{
-					role: "user",
-					parts: [{ text: "Hello, I have 2 dogs in my house." }],
-				},
-				{
-					role: "model",
-					parts: [{ text: "Great to meet you. What would you like to know?" }],
-				},
-			],
+			history: conver_History,
 			generationConfig: {
 				maxOutputTokens: 100,
 			},
