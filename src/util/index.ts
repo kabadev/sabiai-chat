@@ -13,11 +13,11 @@ export default function convertArrayToData(array: ConversationItem[]) {
 	array.forEach((obj, index) => {
 		result.push({
 			role: "user",
-			parts: obj.userInput,
+			parts: [{ text: obj.userInput }],
 		});
 		result.push({
 			role: "model",
-			parts: obj.AIOutput,
+			parts: [{ text: obj.AIOutput }],
 		});
 	});
 
