@@ -52,38 +52,20 @@ const RecentChats = () => {
 
 							<div className="overflow-hidden transition-all  max-sm:p-2 ">
 								<div>
-									<Markdown
-										options={{
-											overrides: {
-												Code: {
-													component: Code,
-												},
-											},
-										}}
-									>
-										{chat?.AIOutput || ""}
-									</Markdown>
-									{/* <ReactMarkdown 
+									<ReactMarkdown
 										components={{
 											pre: ({ node, ...props }) => (
 												<div className="overflow-auto w-full my-2 bg-black/10 p-2 rounded-lg">
 													<pre {...props} />
 												</div>
 											),
-											// code: ({ node, ...props }) => (
-											// 	<code
-											// 		className="bg-black/10s rounded-lg p-1"
-											// 		{...props}
-											// 	/>
-											// ),
+
 											code: Code,
 										}}
 										className="text-sm overflow-hidden leading-7"
 									>
-										{datams}
 										{chat?.AIOutput || ""}
-									</ReactMarkdown> */}
-									{/* {chat?.AIOutput || ""} */}
+									</ReactMarkdown>
 								</div>
 							</div>
 						</div>
