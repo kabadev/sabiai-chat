@@ -19,10 +19,9 @@ export default function convertArrayToData(array:any) {
 		}
 		)
 		result.push({
-			role:"model",)
-
+			role:"model",
 			part:obj.AIOutput
-		}		// result += ` Human:${obj.userInput}\nYou:${obj.AIOutput}\n`;
+		})		// result += ` Human:${obj.userInput}\nYou:${obj.AIOutput}\n`;
 		// if (index < array.length - 1) {
 		// 	result += "\n\n";
 		// }
