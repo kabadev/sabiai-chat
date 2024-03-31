@@ -13,8 +13,7 @@ export async function POST(request: NextRequest) {
 			throw new Error("Missing 'input' field in the request body");
 		}
 
-		const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-		
+		const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY!);
 
 		const model = genAI.getGenerativeModel({ model: "gemini-pro" });
 
@@ -40,7 +39,7 @@ export async function POST(request: NextRequest) {
 		const res = responseAi.text();
 
 		const reqData = {
-			userInput: questionTemplate,
+			userInput: reqBody.userInput,
 			userId: reqBody.userId,
 			conversationId: reqBody.conversationId,
 			AIOutput: res,
